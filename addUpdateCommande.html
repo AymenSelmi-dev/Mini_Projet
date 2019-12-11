@@ -1,0 +1,161 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>::: Gestion Commande:::</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<meta name="Content-Language" content="fr" />
+<meta name="Description" content="" />
+<meta name="Keywords" content=" Tutoriel Spring MVC-Boot-Data JPA Hibernate Bootstrap Jquery " />
+<meta name="Subject" content="" />
+<meta name="Content-Type" content="utf-8" />
+
+ <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+
+	<div class="container">
+
+
+		<section class="h-100">
+			<div class="container h-100">
+				<div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+
+						<div class="card fat">
+							<div class="card-body">
+										<h1 th:if="${commandeForm.idCommande != null}" class="card-title">Modifier Commande </h1>
+										<h4 th:if="${commandeForm.idCommande != null}" class="card-title">Merci de mettre à jour ces données</h4>
+										<h1 th:unless="${commandeForm.idCommande != null}" class="card-title">Nouveau Commande </h1>
+										<h4 th:unless="${commandeForm.idCommande != null}" class="card-title">Merci de renseigner ces données</h4>
+
+								<form id="commandeForm" class="form-horizontal" th:object="${commandeForm}" th:action="@{/commande/save}" method="post">
+
+									<input type="hidden" th:field="*{idCommande}"/>
+									<div class="form-group">
+											
+												
+											
+											<input th:if="${commandeForm.idCommande != null}"  type="text" th:field="*{client.idClient}"
+
+												class="form-control" th:value="${commandeForm.client.idClient}"
+												placeholder="Quntite" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Login est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Login ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+											
+												
+											
+											<input th:if="${commandeForm.idCommande != null}"  type="text" th:field="*{produit.idProduit}"
+
+												class="form-control" th:value="${commandeForm.produit.idProduit}"
+												placeholder="Quntite" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Login est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Login ne doit pas dépasser 100" />
+										</div>
+
+										<div class="form-group">
+											
+												
+											
+											<input type="text" th:field="*{qteCommande}"
+												class="form-control" th:value="${commandeForm.qteCommande}"
+												placeholder="Quntite" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Login est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Login ne doit pas dépasser 100" />
+										</div>
+
+										<div class="form-group">
+										
+											
+											<input type="text" th:field="*{dateCommande}"
+												class="form-control" th:value="${commandeForm.dateCommande}"
+												placeholder="Quntite" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Login est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Login ne doit pas dépasser 100" />
+										</div>
+											
+										<div class="form-group">
+										
+											
+											<input type="text" th:field="*{etatCommande}"
+												class="form-control" th:value="${commandeForm.etatCommande}"
+												placeholder="Quntite" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Login est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Login ne doit pas dépasser 100" />
+										</div>
+										
+											
+										
+										
+
+										
+										
+										
+										<div class="form-group m-0">
+										<button th:if="${commandeForm.idCommande != null}" type="submit" class="btn btn-primary">
+											Modifier</button>
+											
+										<button th:unless="${commandeForm.idCommande != null}" type="submit" class="btn btn-success">
+											Enregistrer</button>
+											
+										<input class="btn btn-secondary" type="reset" value="Effacer">
+										</div>
+									
+								</form>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"></div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- JavaScript Placed at the end of the document so the pages load faster -->
+  	<script src="../../js/jquery-3.3.1.slim.min.js" th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+    <script src="../../js/jquery.form-validator.min.js" th:src="@{/js/jquery.form-validator.min.js}"></script>
+    <script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
+	<script>
+	$.validate();
+	</script>
+
+
+</body>
+</html>
