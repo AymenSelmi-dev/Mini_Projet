@@ -1,0 +1,255 @@
+name: CI
+
+on: [push]
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>::: Gestion Client:::</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<meta name="Content-Language" content="fr" />
+<meta name="Description" content="" />
+<meta name="Keywords" content=" Tutoriel Spring MVC-Boot-Data JPA Hibernate Bootstrap Jquery " />
+<meta name="Subject" content="" />
+<meta name="Content-Type" content="utf-8" />
+
+ <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+
+	<div class="container">
+
+
+		<section class="h-100">
+			<div class="container h-100">
+				<div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+
+						<div class="card fat">
+							<div class="card-body">
+										<h1 th:if="${Clientform.idClient != null}" class="card-title">Modifier produit </h1>
+										<h4 th:if="${Clientform.idClient != null}" class="card-title">Merci de mettre à jour ces données</h4>
+										<h1 th:unless="${Clientform.idClient != null}" class="card-title">Nouveau produit </h1>
+										<h4 th:unless="${Clientform.idClient != null}" class="card-title">Merci de renseigner ces données</h4>
+
+								<form id="Clientform" class="form-horizontal" th:object="${Clientform}" th:action="@{/client/save}" method="post">
+
+									<input type="hidden" th:field="*{idClient}"/>
+
+										<div class="form-group">
+											
+												
+											 <div class="form-group">
+											<input type="text" th:field="*{loginClient}"
+												class="form-control" th:value="${Clientform.loginClient}"
+												placeholder="Login" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Login est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Login ne doit pas dépasser 100" />
+										<div class="form-group">
+											
+											<input type="text" th:field="*{motPasseClient}"
+												class="form-control" th:value="${Clientform.motPasseClient}"
+												placeholder="Mot" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Mot de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Mot de passe ne doit pas dépasser 100" />
+										</div>
+
+										<div class="form-group">
+										
+											<input type="text" th:field="*{nomClient}"
+												class="form-control" th:value="${Clientform.nomClient}"
+												placeholder="Mot" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Mot de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Mot de passe ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										
+											<input type="text" th:field="*{prenomClient}"
+												class="form-control" th:value="${Clientform.prenomClient}"
+												placeholder="Prenom" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Prenom de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Prenom ne doit pas dépasser 100" />
+										</div>
+											
+
+										<div class="form-group">
+										
+											<input type="text" th:field="*{civiliteClient}"
+												class="form-control" th:value="${Clientform.civiliteClient}"
+												placeholder="Civilite" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Civilite de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Civilite ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+
+										<input type="text" th:field="*{dateNaissanceClient}"
+												class="form-control" th:value="${Clientform.dateNaissanceClient}"
+												placeholder="Date de naissance" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+
+										<div class="form-group">
+
+										<input type="text" th:field="*{numeroAdrClient}"
+												class="form-control" th:value="${Clientform.numeroAdrClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+
+										<input type="text" th:field="*{rueAdrClient}"
+												class="form-control" th:value="${Clientform.rueAdrClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{communeAdrClient}"
+												class="form-control" th:value="${Clientform.communeAdrClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{villeAdrClient}"
+												class="form-control" th:value="${Clientform.villeAdrClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{cpAdrClient}"
+												class="form-control" th:value="${Clientform.cpAdrClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{telClient}"
+												class="form-control" th:value="${Clientform.telClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{faxClient}"
+												class="form-control" th:value="${Clientform.faxClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{gsmClient}"
+												class="form-control" th:value="${Clientform.gsmClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										<div class="form-group">
+										<input type="text" th:field="*{emailClient}"
+												class="form-control" th:value="${Clientform.emailClient}"
+												placeholder="Num" required="required"
+												data-validation-length="max100"
+												data-validation="required length"
+												data-validation-error-msg-required="Champs Date de naissance de passe est Obligatoire"
+												data-validation-error-msg-length="Taille du champs Date de naissance ne doit pas dépasser 100" />
+										</div>
+										
+										<button th:if="${Clientform.idClient != null}" type="submit" class="btn btn-primary">
+											Modifier</button>
+											
+										<button th:unless="${Clientform.idClient != null}" type="submit" class="btn btn-success">
+											Enregistrer</button>
+											
+										<input class="btn btn-secondary" type="reset" value="Effacer">
+											
+									
+								</form>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"></div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- JavaScript Placed at the end of the document so the pages load faster -->
+  	<script src="../../js/jquery-3.3.1.slim.min.js" th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+    <script src="../../js/jquery.form-validator.min.js" th:src="@{/js/jquery.form-validator.min.js}"></script>
+    <script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
+	<script>
+	$.validate();
+	</script>
+
+
+</body>
+</html>
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
